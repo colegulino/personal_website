@@ -1,0 +1,481 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"getP",
+				"getParameters"
+			],
+			[
+				"get",
+				"getParameters"
+			],
+			[
+				"getPara",
+				"getParametersOptimization"
+			],
+			[
+				"bu",
+				"bucket_size"
+			],
+			[
+				"bucket_",
+				"bucket_count"
+			],
+			[
+				"bucket",
+				"buckets"
+			],
+			[
+				"final",
+				"finalPostureHashTable"
+			],
+			[
+				"initial",
+				"initialPosture"
+			],
+			[
+				"out",
+				"out"
+			],
+			[
+				"Na",
+				"NearestNeighbor"
+			],
+			[
+				"Ro",
+				"ROS_INFO"
+			],
+			[
+				"ros",
+				"ROS_INFO"
+			],
+			[
+				"buck",
+				"bucket_count"
+			],
+			[
+				"in",
+				"initialPostureHashTable"
+			],
+			[
+				"theta",
+				"thetaf"
+			],
+			[
+				"the",
+				"thetafQuant_"
+			],
+			[
+				"yf",
+				"yfQuant_"
+			],
+			[
+				"xf",
+				"xfQuant_"
+			],
+			[
+				"k0",
+				"k0Quant_"
+			],
+			[
+				"init",
+				"initPosture"
+			],
+			[
+				"ini",
+				"iniitalPosture"
+			],
+			[
+				"pr",
+				"previous_corner"
+			],
+			[
+				"corner",
+				"corner_center"
+			],
+			[
+				"cur",
+				"curr_pos"
+			],
+			[
+				"in_",
+				"in_center"
+			],
+			[
+				"corn",
+				"corner_center"
+			],
+			[
+				"curr",
+				"curr_corner"
+			],
+			[
+				"cor",
+				"corner_1"
+			],
+			[
+				"next_c",
+				"next_corner"
+			],
+			[
+				"id",
+				"id"
+			],
+			[
+				"coer",
+				"corner_2"
+			],
+			[
+				"c",
+				"corner_1"
+			],
+			[
+				"curr_",
+				"curr_corner"
+			],
+			[
+				"cros",
+				"crosswalks"
+			],
+			[
+				"cw",
+				"cw_signal"
+			],
+			[
+				"pose",
+				"pose_2d"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
+				"realistic",
+				"realistic_actor"
+			],
+			[
+				"home",
+				"homework_sim_cole"
+			],
+			[
+				"cols",
+				"cols_"
+			],
+			[
+				"rows",
+				"rows_"
+			],
+			[
+				"kf",
+				"kfQuant_"
+			],
+			[
+				"thet",
+				"thetafQuant_"
+			],
+			[
+				"rea",
+				"readFile2Database"
+			],
+			[
+				"theta0",
+				"theta0Quant"
+			],
+			[
+				"ins",
+				"insertFinalPosture"
+			],
+			[
+				"inser",
+				"insertInitialPosture"
+			],
+			[
+				"int",
+				"int"
+			],
+			[
+				"shops",
+				"shops_shorted"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 2194,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/include/trajectory_database/posture.h",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/include/trajectory_database/data_structs.h",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/CMakeLists.txt",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/include/trajectory_database/motion_primitive_generator.h",
+		"/home/cole/Dropbox/Personal_Website/index.html",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/include/trajectory_database/TrajectoryDatabase.h",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/src/database_profile.cpp",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/src/profile_hash_table.cpp",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/src/getParameters.cpp",
+		"/home/cole/Dropbox/work/Database/database_ws/src/CMakeLists.txt",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/src/TrajectoryDatabase.cpp",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/launch/trajectory_database.launch",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/src/motion_primitive_generator.cpp",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/src/Database.txt",
+		"/home/cole/Dropbox/work/Database/database_ws/src/lane-trajectory-planner/lane_trajectory_planner/src/motion_primitive_generator.cpp",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/include/trajectory_database/Database.sublime-workspace",
+		"/home/cole/Dropbox/work/Database/database_ws/src/lane-trajectory-planner/lane_trajectory_planner/src/lane_trajectory_planner_node.cpp",
+		"/home/cole/.local/share/Trash/files/myAutomaticDifferentiation/myAutomaticDifferentiation/@myA2D/abs.m",
+		"/home/cole/Downloads/myAutomaticDifferentiation/myAutomaticDifferentiation/example_AD.m",
+		"/home/cole/Dropbox/Uber/ped_homework/Makefile",
+		"/home/cole/Dropbox/Uber/ped_homework/lib/geometry.h",
+		"/home/cole/Dropbox/Uber/ped_homework/lib/simulator.h",
+		"/home/cole/Dropbox/Uber/ped_homework/lib/world.h",
+		"/home/cole/Dropbox/Uber/ped_homework/realistic_actor.cpp",
+		"/home/cole/Dropbox/Uber/ped_homework/realistic_actor.h",
+		"/home/cole/Dropbox/Uber/ped_homework/graphics.h",
+		"/home/cole/Dropbox/Uber/ped_homework/homework_sim.cpp",
+		"/home/cole/Dropbox/Uber/ped_homework/default_actor.cpp",
+		"/home/cole/Dropbox/Uber/ped_homework/default_actor.h",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Dynamic Optimization/Homework/References/inv-kin-con/constraints.sublime-project",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Dynamic Optimization/Homework/References/inv-kin-con/constraints.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Dynamic Optimization/Homework/References/inv-kin-con/criterion.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Dynamic Optimization/Homework/References/inv-kin-con/draw3.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Dynamic Optimization/Homework/References/inv-kin-con/fk.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Dynamic Optimization/Homework/References/inv-kin-con/initdraw.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Dynamic Optimization/Homework/References/inv-kin-con/main.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Dynamic Optimization/Homework/References/inv-kin-con/maincon.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Dynamic Optimization/Homework/References/inv-kin-con/notes.txt",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Dynamic Optimization/Homework/References/inv-kin-con/constraints.sublime-workspace",
+		"/home/cole/Dropbox/Uber/ped_homework/structs.txt",
+		"/home/cole/Dropbox/Uber/ped_homework/graphics.cpp",
+		"/home/cole/Dropbox/Uber/ped_homework/lib/libsimulator.a",
+		"/home/cole/Dropbox/Uber/ped_homework/homework_sim_cole.cpp",
+		"/home/cole/.config/sublime-text-3/Packages/User/C++.sublime-settings",
+		"/home/cole/Downloads/quaternions/qRotatePoint.m",
+		"/home/cole/Documents/MATLAB/NumSim_1_00_partial/NumSim/Util_NumSim/quatrotate.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Computer Vision/Homework/HW1/hw1/code/getImageFeaturesSPM.m",
+		"/home/cole/Dropbox/work/Offline Generator/Code/Auxilary Code/Database.txt",
+		"/home/cole/Desktop/text.cpp",
+		"/home/cole/Documents/C++/abstract.cpp",
+		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/src/M2.txt",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Computer Vision/Homework/HW1/hw1/code/batchToVisualWords.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Manipulation, Mobility, and Control/Problem Sets/Problem Set 3/MMC_assignment3_cgulino/ps3p2.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Robot Autonomy/Homework/Homework0/hw0/hw0-cgulino/python_tutorial.py",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Robot Autonomy/Homework/Homework0/hw0/code/python_tutorial.py",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Manipulation, Mobility, and Control/Problem Sets/Problem Set 3/MMC_assignment3_cgulino/LIPM3D.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Spring 2016/Robot Autonomy/Homework/Tests/GetTransformTest",
+		"/home/cole/Dropbox/work/Offline Generator/Code/getJacobian3.m",
+		"/home/cole/Dropbox/work/Offline Generator/Code/getJacobian2.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Intro to Machine Learning/Projects and Homework/Homework4/template/maximization_step.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Intro to Machine Learning/Projects and Homework/project1/bestStuff_Literally_the_best.py",
+		"/home/cole/Documents/C/unionTest.c",
+		"/home/cole/Documents/C/ptr.c",
+		"/home/cole/Documents/C/fib.cpp",
+		"/home/cole/Documents/C/mineSweeper.cpp",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Intro to Machine Learning/Projects and Homework/Homework4/cgulino/get_forward_variables.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Intro to Machine Learning/Projects and Homework/Homework4/cgulino/get_backward_variables.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Intro to Machine Learning/Projects and Homework/Homework4/cgulino/expectation_step.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Intro to Machine Learning/Projects and Homework/Homework4/cgulino/maximization_step.m",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Intro to Machine Learning/Projects and Homework/project1/num_run_1",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Intro to Machine Learning/Projects and Homework/project1/autoscikit.py",
+		"/home/cole/Documents/getChar.c",
+		"/home/cole/Documents/input.c",
+		"/home/cole/Documents/bool.c",
+		"/home/cole/Documents/myster.c",
+		"/home/cole/Documents/example.c"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"next_corner",
+			"curr_corner",
+			"world::corner",
+			"corner",
+			"p_d",
+			"guid"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2194,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1331,
+								1331
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 855.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "website.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 262.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
