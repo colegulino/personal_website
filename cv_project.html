@@ -1,0 +1,120 @@
+<HTML>
+  <head>
+    <title>Computer Vision Project</title>
+    <meta charset="utf-8">
+    <style>
+
+      @font-face {
+        font-family: 'Shift';
+        font-style: normal;
+        font-weight: normal;
+        src: url("http://s3.amazonaws.com/codecademy-content/courses/ltp/fonts/shift.woff") format("woff");
+      }
+
+      .nav a {
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+        padding: 14px 10px;
+        text-transform: uppercase;
+      }
+
+      .nav a:link{
+        text-decoration: none;
+        color: white;
+      }
+
+      .nav a:visited{
+        text-decoration: none;
+        color: white;
+      }
+
+      .nav a:hover{
+        text-decoration: underline;
+        color: white;
+      }
+
+      .nav li{
+        display: inline;
+      }
+
+      .jumbotron h1, p, a{
+        font-family: "Arial", sans-serif;
+      }
+
+      .jumbotron li{
+        display: inline;
+      }
+
+      .jumbotron, .paragraph, .education, .skills {
+        font-family: "Shift", Arial, serif;
+      }
+
+      .nav {
+        background-color: #6f6c67;
+      }
+
+      .introduction, .relevant_papers {
+        background-color: #dedede;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+      <div class="container">
+        <ul class="links">
+          <li><a href="http://http://cole.gulino.getforge.io/index.html">Home</a></li>
+          <li><a href="http://http://cole.gulino.getforge.io/cole_about_me.html">About Me</a></li>
+          <li><a href="Projects.com">Projects Blog</a></li>
+          <li><a href="http://54.148.88.245/cole_resume.html">Resume</a></li>
+          <li><a href="http://54.148.88.245/cole_cv.pdf">CV</a></li>
+          <li><a href="http:www.linkedin.com/in/colegulino">Linkedin</a></li>
+          <li><a href="https://github.com/colegulino">Github</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <ul class="pull-left">
+          <li id="profile-pic"> <img src="http://54.148.88.245/profile_pic.jpg"/></li>
+          <li id="contact-info">
+            <h1>Computer Vision Project</h1>
+            <p>Phone: (225) 223-1378</p>
+            <p>Email:
+              <a href="mailto:cole.gulino@gmail.com" target="_top">cole.gulino@gmail.com</a>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="introduction">
+      <h3>Introduction</h3>
+      <p>This the webpage for my Computer Vision Project, which I am working on for my Spring 2016 course, 16-720 Computer Vision at Carnegie Mellon University.</p>
+      <p>The project is based on the idea of recognizing pedestrians from geometries using Semantic Structure from Motion. I believe that this is a worthwhile task especially in self-driving car applications. Recognition using Structure from Motion could improve recognition rates of pedestrians in low-light settings</p>
+      <p>I plan to use the <a href="http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/">Caltech Pedestrian Detection Dataset</a></p> 
+    </div>
+
+    <div class="proejct_description">
+      <h3>Project Description</h3>
+      <p>A major challenge for autonomous vehicles is recognition of dynamic obstacles such as pedestrians in cluttered urban environments. This problem can be exacerbated by low-light conditions such as driving in the rain or at night. Normal detection methods may not be accurate in these low-light settings. Another major issue with single image classification methods such as bag of words, is that the do not provide valuable information about the pedestrians such as orientation, and distance in the 3D scene. This information is very important for understanding the intentions and probability of collisions for dynamic obstacles. I propose that by using the Semantic Structure from Motion Algorithm [1] along with techniques for improving Structure from Motion in low-light settings [2], I will be able to get accurate pedestrian classification and tracking in low light settings.</p>
+      <p>I will be implementing the algorithms myself in C++ utilizing OpenCV. I will not use an out of the box method for the Structure from Motion algorithm. I plan to specifically implement the Semantic Structure from Motion Algorithm [1] while attempting to improve performance in low-light settings. I plan to initially use the Caltech Pedestrian Detection Benchmark to test my performance along with the datasets provided [3]. [4], [5], and [6] show other relevant papers.</p>
+    </div> 
+
+    <div class="relevant_papers">
+      <h3>Relevant Papers and Links</h3>
+      <p>The relevant papers for my project can be found here</p>
+      [1] <a href="http://wwweb.eecs.umich.edu/vision/papers/bao_ssfm_cvpr2011.pdf">Semantic Structure from Motion</a> by Bao et al.<br><br>
+      [2] <a href="http://grail.cs.washington.edu/projects/stshading/879_Zhang_L.pdf">Shape and Motion under Varying Illumination: Unifying Structure from Motion, Photometric Stereo, and Multi-View Stereo</a> by Zhang et al.<br><br>
+      [3] <a href="http://www.vision.caltech.edu/Image_Datasets/CaltechPedestrians/">Caltech Pedestrian Benchmarks</a><br><br>
+      [4] <a href="http://research.microsoft.com/pubs/117889/eccv08.pdf">Segmentation and Recognition using Structure from Motion Point Clouds</a> by Brostow et al.<br><br>
+      [5] <a href="http://www.cc.gatech.edu/~phlosoft/files/schindler06_3dpvt.pdf">Line-Based Structure from Motion for Urban Environments</a> by Schindler et al.<br><br>
+      [6] <a href="http://www.mobileye.com/wp-content/uploads/2011/09/EgoMotion.pdf">A Robust Method for Computing Vehicle Ego-Motion</a> by Stein et al.<br>
+    </div>
+
+  </body>
+</HTML>
