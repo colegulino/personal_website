@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <style>
 
-      @font-face {
+
+       @font-face {
         font-family: 'Shift';
         font-style: normal;
         font-weight: normal;
@@ -38,27 +39,34 @@
         display: inline;
       }
 
-      .jumbotron h1, p, a{
-        font-family: "Arial", sans-serif;
-      }
-
-      .jumbotron li{
-        display: inline;
-      }
-
-      .jumbotron, .paragraph, .education, .skills {
-        font-family: "Shift", Arial, serif;
-      }
-
       .nav {
         background-color: #6f6c67;
       }
 
-      .paragraph {
-        background-color: #dedede;
+      .jumbotron {
+        background-image: url("http://cole.gulino.getforge.io/cover-photo.jpg");
+        height: 500px;
+        background-repeat: no-repeat;
+        background-size: cover;
       }
 
-      .skills {
+      .jumbotron .container {
+        position: relative;
+        top: 100px;
+      }
+
+      .jumbotron h1 {
+        color: #fff;
+        font-size: 48px;
+        font-family: 'Shift', sans-serif;
+        font-weight: bold;
+      }
+
+      .jumbotron p {
+        font-size: 20px;
+        color: #fff;
+      }
+      .paragraph_color {
         background-color: #dedede;
       }
 
@@ -107,48 +115,52 @@
        every aspect of our lives, and I believe that one of the most rewarding applications is in the medical field.</p>
     </div>
 
-    <div class="education">
-      <h2>Education</h2>
-      <ol>
-      <li>Catholic High School (2007-2009)</li>
-      <li>BSEE Louisiana State University (2009-2015) GPA: 3.826</li>
-      </ol>
+    <div class="paragraph_color">
+      <div id="education">
+        <h2>Education</h2>
+        <ol>
+        <li>Catholic High School (2007-2009)</li>
+        <li>BSEE Louisiana State University (2009-2015) GPA: 3.826</li>
+        </ol>
+      </div>
     </div>
 
-    <div class="skills">
-      <h2>Skills</h2>
-      <h3>Programming Languages</h3>
-      <ul>
-        <li>C++</li>
-        <li>Python</li>
-        <li>MATLAB</li>
-        <li>HTML, CSS, and JS</li>
-        <li>Verilog</li>
-        <li>PSPICE</li>
-        <li>ARMv7 and MIPS Assembly Language</li>
-      </ul>
+    <div class = "paragraph">
+      <div id="skills">
+        <h2>Skills</h2>
+        <h3>Programming Languages</h3>
+        <ul>
+          <li>C++</li>
+          <li>Python</li>
+          <li>MATLAB</li>
+          <li>HTML, CSS, and JS</li>
+          <li>Verilog</li>
+          <li>PSPICE</li>
+          <li>ARMv7 and MIPS Assembly Language</li>
+        </ul>
 
-      <h3>Programming Skills</h3>
-      <ul>
-        <li>Neural Networks</li>
-        <li>Data Structures and Algorithms</li>
-        <li>Socket Programming</li>
-        <li>Robotics</li>
-        <li>VLSI</li>
-        <li>Computer Architecture</li>
-        <li>Engineering Programming</li>
-      </ul>
+        <h3>Programming Skills</h3>
+        <ul>
+          <li>Neural Networks</li>
+          <li>Data Structures and Algorithms</li>
+          <li>Socket Programming</li>
+          <li>Robotics</li>
+          <li>VLSI</li>
+          <li>Computer Architecture</li>
+          <li>Engineering Programming</li>
+        </ul>
 
-      <h3>Hardware Design Tools</h3>
-      <ul>
-        <li>L-Edit</li>
-        <li>PCB Express</li>
-        <li>Eagle PCB</li>
-        <li>Diptrace</li>
-      </ul>
+        <h3>Hardware Design Tools</h3>
+        <ul>
+          <li>L-Edit</li>
+          <li>PCB Express</li>
+          <li>Eagle PCB</li>
+          <li>Diptrace</li>
+        </ul>
+      </div>
     </div>
 
-    <p>To see a full list of my undergraduate courses see my <a href="http://54.148.88.245/cole_cv.pdf">CV</a></p>
+    <p>To see a full list of my undergraduate courses see my <a href="http://cole.gulino.getforge.io/cole_cv.pdf">CV</a></p>
 
   </body>
 </HTML>
