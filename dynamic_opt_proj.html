@@ -1,0 +1,154 @@
+<HTML>
+  <head>
+    <title>Dynamic Optimization Project</title>
+    <meta charset="utf-8">
+    <style>
+
+       @font-face {
+        font-family: 'Shift';
+        font-style: normal;
+        font-weight: normal;
+        src: url("http://s3.amazonaws.com/codecademy-content/courses/ltp/fonts/shift.woff") format("woff");
+      }
+
+      .nav a {
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+        padding: 14px 10px;
+        text-transform: uppercase;
+      }
+
+      .nav a:link{
+        text-decoration: none;
+        color: white;
+      }
+
+      .nav a:visited{
+        text-decoration: none;
+        color: white;
+      }
+
+      .jumbotron a {
+        color:white;
+      }
+
+      .nav a:hover{
+        text-decoration: underline;
+        color: white;
+      }
+
+      .nav li{
+        display: inline;
+      }
+
+      .nav {
+        background-color: #6f6c67;
+      }
+
+      .jumbotron {
+        background-image: url("cover-photo.jpg");
+        height: 500px;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .jumbotron .container {
+        position: relative;
+        top: 100px;
+      }
+
+      .jumbotron h1 {
+        color: #fff;
+        font-size: 48px;
+        font-family: 'Shift', sans-serif;
+        font-weight: bold;
+      }
+
+      .jumbotron p {
+        font-size: 20px;
+        color: #fff;
+      }
+      .paragraph_color {
+        font-family: 'Shift', sans-serif;
+        background-color: #dedede;
+      }
+
+      .paragraph {
+        font-family: 'Shift', sans-serif;
+      }
+
+    </style>
+  </head>
+
+  <body>
+     <div class="nav">
+      <div class="container">
+        <ul class="links">
+          <li><a href="http://cole.gulino.getforge.io/index.html">Home</a></li>
+          <li><a href="http://cole.gulino.getforge.io/cole_about_me.html">About Me</a></li>
+          <li><a href="http://cole.gulino.getforge.io/project_page.html">Projects Blog</a></li>
+          <li><a href="cole_resume.pdf">Resume</a></li>
+          <li><a href="cole_cv.pdf">CV</a></li>
+          <li><a href="http://www.linkedin.com/in/colegulino">Linkedin</a></li>
+          <li><a href="https://github.com/colegulino">Github</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <ul class="pull-left">
+          <li id="contact-info">
+            <h1>Dynamic Optimization Final Project</h1>
+            <p>Phone: (225) 223-1378</p>
+            <p>Email:
+              <a href="mailto:cole.gulino@gmail.com" target="_top">cole.gulino@gmail.com</a>
+            </p>
+            <p>Github Repository:
+              <a href="TODO">source code</a>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="paragraph_color">
+      <div id="introduction">
+        <h3>Introduction</h3>
+        <p>This webpage is designed to contain all of the information for my final project for the course 16-745 Dynamic Optimization at Carnegie Mellon University</p>
+        <p>The project that I will be completing will be designed around Partially Observable Markov Decision Processes in order to learn a value function representing a policy for acting in urban environment with pedestrians. Specifically I would like to learn how to handle the uncertainty in a pedestrian's actions.</p>
+        <p>I am also interested in using parallel computation for efficient policy optimization as suggested in the <a href="http://www.cs.cmu.edu/~cga/dynopt/projects.html">project suggestion page</a></p>
+      </div>
+    </div>
+
+    <div class="paragraph">
+      <div id="project_description">
+        <h3>Project Description</h3>
+        <p>For this project, I plan to use methods similiar to [8], [9], and [10] in order to form a policy for planning with an autonomous vehicle that must take into account the actions of the pedestrians around it.</p>
+        <p>I plan to utilize methods in [1], [2], [3], and [7] in order to solve for the policy that optimizes the decisions of the car as it depends on the pedestrians.</p>
+        <p>I plan on either running the alogithms from images using similiar data sets to [8], [9], or [10] or by using the <a href="http://openrave.org/">openrave</a> simulation environment.</p>
+        <p>I plan to learn a policy and demonstrate in simulation or through test images the actions of an autonomous car in an urban environment with pedestrains.</p>
+        <p>Finally, I am considering using parellel computation to efficiently compute the notoriously computationally intensive POMDPs as suggested in the <a href="http://www.cs.cmu.edu/~cga/dynopt/projects.html">project suggestion page</a></p>
+      </div> 
+    </div>
+
+    <div class="paragraph_color">
+      <div id="relevant_papers">
+        <h3>Relevant Papers and Links</h3>
+        <p>The relevant papers for my project can be found here</p>
+        [1] <a href="http://www.cs.toronto.edu/~darius/papers/POMDP_survey.pdf">POMDP Solution Methods</a> by Braziunas<br><br>
+        [2] <a href="http://arxiv.org/pdf/1602.04875.pdf">POMDP-lite for Robust Robot Planning Under Uncertainty</a> by Chen et al.<br><br>
+        [3] <a href="http://www.cs.mcgill.ca/~jpineau/files/jpineau-isrr05.pdf">POMDP Planning for Robust Robot Control</a> by Pineau and Gordon<br><br>
+        [4] <a href="http://www.pomdp.org/papers/applications.pdf">A Survey of POMDP Applications</a> by Cassandra<br><br>
+        [5] <a href="http://arxiv.org/pdf/1212.2495.pdf">Policy-contingent abstraction for robust robot control</a> by Pineau, Gordon, and Thrun<br><br>
+        [6] <a href="http://ares.lids.mit.edu/fm/documents/planning.pdf">Planning How to Learn</a> by Bai et al.<br><br>
+        [7] <a href="http://www.cis.upenn.edu/~mkearns/papers/barbados/klc-pomdp.pdf">Planning and acting in partially observable stochastic domains</a> by Cassandra et al.<br><br>
+        [8] <a href="http://ares.lids.mit.edu/fm/documents/Intention-aware%20pedestrian%20avoidance.pdf">Intention-Aware Pedestrian Avoidance</a> by Bandyopadhyay et al.<br><br>
+        [9] <a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&arnumber=7139219">Intention-Aware Online POMDP Planning for Autonomous Driving in a Crowd</a> by Bai et al.<br><br>
+        [10] <a href="http://www.ece.rochester.edu/projects/rail/mlhrc2015/papers/mlhrc-rss15-matthews.pdf">Intent Communication between Autonomous Vehicles and Pedestrians</a> by Matthews and Chowdhary<br>
+      </div>
+    </div>
+
+  </body>
+</HTML>
