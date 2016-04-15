@@ -119,41 +119,33 @@
         <!-- Part One -->
         <h1>Part One</h1>
         <p>Here we consider multiple ways to parameterize an inverted pendulum walking robot with an offset flywheel, which is a simplified model of Atrias.</p>
-        <p>Dynamics: For each case all the mass is concentrated at a body whose center of mass is LL = 0.1m above the hip. The body has mass M and moment of inertia around the center of mass I_com. M = 80 kg, I_com = 5 kgm^2, g = 9.81 m/s^2.</p>
-        <p>theta is the angle of the body with respect to vertical (measured with an IMU). psi is the angle of the hip with respect to the leg (measured with an encoder). The leg length is L. torque is the torque at the hip. force is the force along the leg. Fx_foot and Fy_foot are ground reaction forces in ground coordinates.</p>
+        <p>Dynamics: For each case all the mass is concentrated at a body whose center of mass is <a href="https://www.codecogs.com/eqnedit.php?latex=LL&space;=&space;0.1m" target="_blank"><img src="https://latex.codecogs.com/gif.latex?LL&space;=&space;0.1m" title="LL = 0.1m" /></a> above the hip. The body has mass M and moment of inertia around the center of mass <a href="https://www.codecogs.com/eqnedit.php?latex=I_{COM}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{COM}" title="I_{COM}" /></a>. <a href="https://www.codecogs.com/eqnedit.php?latex=M=80kg\text{;&space;}I_{COM}=5kg\cdot&space;m^2\text{;&space;}g=9.81m/s^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?M=80kg\text{;&space;}I_{COM}=5kg\cdot&space;m^2\text{;&space;}g=9.81m/s^2" title="M=80kg\text{; }I_{COM}=5kg\cdot m^2\text{; }g=9.81m/s^2" /></a></p>
+        <p>theta is the angle of the body with respect to vertical (measured with an IMU). psi is the angle of the hip with respect to the leg (measured with an encoder). The leg length is L. torque is the torque at the hip. force is the force along the leg. <a href="https://www.codecogs.com/eqnedit.php?latex=F_{x,foot}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{x,foot}" title="F_{x,foot}" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=F_{y,foot}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{y,foot}" title="F_{y,foot}" /></a> are ground reaction forces in ground coordinates.</p>
 
         <!-- Action Parameterization I-->
         <h2>Action Parameterization I</h2>
-        <p>I_joint = I_com + M*LL^2 <br>
-        torque = I_joint*thetadd</p>
-
-        <p>x_hip = L*sin(theta - psi) <br>
-        y_hip = L*cos(theta - psi)</p>
-
-        <p>x_com = x_hip + LL*sin(theta) = L*sin(theta - psi) + LL*sin(theta) <br>
-        y_com = y_hip + LL*cos(theta) = L*cos(theta - psi) + LL*cos(theta) <br>
-        so <br>
-        x_comd = L*cos(theta - psi)*(thetad - psid) + LL*cos(theta)*thetad <br>
-        y_comd = -L*sin(theta - psi)*(thetad - psid) - LL*sin(theta)*thetad <br>
-        and <br>
-        x_comdd = L*cos(theta - psi)<em>(thetadd - psidd) - L*cos(theta - psi)</em>(thetad - psid)^2 <br>
-         + LL*cos(theta)*thetadd - LL*sin(theta)*thetad^2 <br>
-        y_comdd = -L*sin(theta - psi)<em>(thetadd - psidd) + L*sin(theta - psi)</em>(thetad - psid)^2 <br>
-         - LL*sin(theta)*thetadd - LL*cos(theta)*thetad^2</p>
-
-        <p>Fx_com = -force*sin(theta - psi) + torque*cos(theta-psi)/L <br>
-        Fy_com = force*cos(theta - psi) - M*g + torque*sin(theta-psi)/L</p>
-
-        <p>Fx_com = M*x_comdd <br>
-        Fy_com = M*y_comdd</p>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=I_{joint}&space;=&space;I_{COM}&space;&plus;&space;M*LL^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{joint}&space;=&space;I_{COM}&space;&plus;&space;M*LL^2" title="I_{joint} = I_{COM} + M*LL^2" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=\tau&space;=&space;I_{joint}\theta_{dd}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\tau&space;=&space;I_{joint}\theta_{dd}" title="\tau = I_{joint}\theta_{dd}" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=x_{hip}&space;=&space;L\sin\left(\theta&space;-&space;\psi&space;\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{hip}&space;=&space;L\sin\left(\theta&space;-&space;\psi&space;\right&space;)" title="x_{hip} = L\sin\left(\theta - \psi \right )" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=y_{hip}&space;=&space;L\cos\left(\theta&space;-&space;\psi)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_{hip}&space;=&space;L\cos\left(\theta&space;-&space;\psi)" title="y_{hip} = L\cos\left(\theta - \psi)" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=x_{COM}&space;=&space;x_{hip}&plus;LL\sin(\theta)=L\sin(\theta-\psi)&space;&plus;&space;LL\sin(\theta)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{COM}&space;=&space;x_{hip}&plus;LL\sin(\theta)=L\sin(\theta-\psi)&space;&plus;&space;LL\sin(\theta)" title="x_{COM} = x_{hip}+LL\sin(\theta)=L\sin(\theta-\psi) + LL\sin(\theta)" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=y_{COM}&space;=&space;y_{hip}&plus;LL\cos(\theta)=L\cos(\theta-\psi)&space;&plus;&space;LL\cos(\theta)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_{COM}&space;=&space;y_{hip}&plus;LL\cos(\theta)=L\cos(\theta-\psi)&space;&plus;&space;LL\cos(\theta)" title="y_{COM} = y_{hip}+LL\cos(\theta)=L\cos(\theta-\psi) + LL\cos(\theta)" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=x_{COM_d}=L\cos(\theta-\psi)(\theta_d-\psi_d)&plus;LL\cos(\theta)\theta_d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{COM_d}=L\cos(\theta-\psi)(\theta_d-\psi_d)&plus;LL\cos(\theta)\theta_d" title="x_{COM_d}=L\cos(\theta-\psi)(\theta_d-\psi_d)+LL\cos(\theta)\theta_d" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=y_{COM_d}=-L\sin(\theta-\psi)(\theta_d-\psi_d)-LL\sin(\theta)\theta_d" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_{COM_d}=-L\sin(\theta-\psi)(\theta_d-\psi_d)-LL\sin(\theta)\theta_d" title="y_{COM_d}=-L\sin(\theta-\psi)(\theta_d-\psi_d)-LL\sin(\theta)\theta_d" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=x_{COM_{dd}}=L\cos(\theta-\psi)(\theta_{dd}-\psi_{dd})-L\cos(\theta-\psi)(\theta_{d}-\psi_d)^2&space;&plus;&space;LL\cos(\theta)\theta_{dd}-LL\sin(\theta)\theta_d^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{COM_{dd}}=L\cos(\theta-\psi)(\theta_{dd}-\psi_{dd})-L\cos(\theta-\psi)(\theta_{d}-\psi_d)^2&space;&plus;&space;LL\cos(\theta)\theta_{dd}-LL\sin(\theta)\theta_d^2" title="x_{COM_{dd}}=L\cos(\theta-\psi)(\theta_{dd}-\psi_{dd})-L\cos(\theta-\psi)(\theta_{d}-\psi_d)^2 + LL\cos(\theta)\theta_{dd}-LL\sin(\theta)\theta_d^2" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=y_{COM_{dd}}=-L\sin(\theta-\psi)(\theta_{dd}-\psi_{dd})&plus;L\sin(\theta-\psi)(\theta_d-\psi_d)^2-LL\sin(\theta)\theta_{dd}-LL\cos(\theta)\theta_d^2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_{COM_{dd}}=-L\sin(\theta-\psi)(\theta_{dd}-\psi_{dd})&plus;L\sin(\theta-\psi)(\theta_d-\psi_d)^2-LL\sin(\theta)\theta_{dd}-LL\cos(\theta)\theta_d^2" title="y_{COM_{dd}}=-L\sin(\theta-\psi)(\theta_{dd}-\psi_{dd})+L\sin(\theta-\psi)(\theta_d-\psi_d)^2-LL\sin(\theta)\theta_{dd}-LL\cos(\theta)\theta_d^2" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=F_{x,COM}=&space;-&space;F\sin(\theta-\psi)&plus;\tau\cos(\theta-\psi)/L" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{x,COM}=&space;-&space;F\sin(\theta-\psi)&plus;\tau\cos(\theta-\psi)/L" title="F_{x,COM}= - F\sin(\theta-\psi)+\tau\cos(\theta-\psi)/L" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=F_{y,COM}=F\cos(\theta-\psi)-Mg&space;&plus;&space;\tau\sin(\theta-\psi)/L" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{y,COM}=F\cos(\theta-\psi)-Mg&space;&plus;&space;\tau\sin(\theta-\psi)/L" title="F_{y,COM}=F\cos(\theta-\psi)-Mg + \tau\sin(\theta-\psi)/L" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=F_{x,COM}=Mx_{COM_{dd}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{x,COM}=Mx_{COM_{dd}}" title="F_{x,COM}=Mx_{COM_{dd}}" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=F_{y,COM}=My_{COM_{dd}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{y,COM}=My_{COM_{dd}}" title="F_{y,COM}=My_{COM_{dd}}" /></a><br>
 
         <!-- Action Parameterization II -->
         <h2>Action Parameterization II</h2>
-        <p>The robot is controlled in terms of ground reaction forces Fx_foot and Fy_foot at the point foot. xcom_dd, ycom_dd and theta_dd are a function of Fx_foot and Fy_foot.</p>
+        <p>The robot is controlled in terms of ground reaction forces <a href="https://www.codecogs.com/eqnedit.php?latex=F_{x,foot}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{x,foot}" title="F_{x,foot}" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=F_{y,foot}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{y,foot}" title="F_{y,foot}" /></a> at the point foot. <a href="https://www.codecogs.com/eqnedit.php?latex=x_{COM_{dd}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{COM_{dd}}" title="x_{COM_{dd}}" /></a>, <a href="https://www.codecogs.com/eqnedit.php?latex=y_{COM_{dd}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y_{COM_{dd}}" title="y_{COM_{dd}}" /></a> and  <a href="https://www.codecogs.com/eqnedit.php?latex=\theta_{COM_{dd}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\theta_{COM_{dd}}" title="\theta_{COM_{dd}}" /></a>are a function of <a href="https://www.codecogs.com/eqnedit.php?latex=F_{x,foot}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{x,foot}" title="F_{x,foot}" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=F_{y,foot}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?F_{y,foot}" title="F_{y,foot}" /></a> .</p><br>
 
-        <p>M*xcom_dd = Fx_foot <br>
-        M*ycom_dd = Fy_foot -M*g <br>
-        I_com*theta_dd = Fx_foot*y_com - Fy_foot*x_com</p>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=Mx_{COM_{dd}}&space;=&space;F_{x,foot}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Mx_{COM_{dd}}&space;=&space;F_{x,foot}" title="Mx_{COM_{dd}} = F_{x,foot}" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=My_{COM_{dd}}=F_{y,foot}-Mg" target="_blank"><img src="https://latex.codecogs.com/gif.latex?My_{COM_{dd}}=F_{y,foot}-Mg" title="My_{COM_{dd}}=F_{y,foot}-Mg" /></a><br>
+        <a href="https://www.codecogs.com/eqnedit.php?latex=I_{COM}\theta_{dd}=F_{x,foot}y_{COM}-F_{y,foot}x_{COM}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?I_{COM}\theta_{dd}=F_{x,foot}y_{COM}-F_{y,foot}x_{COM}" title="I_{COM}\theta_{dd}=F_{x,foot}y_{COM}-F_{y,foot}x_{COM}" /></a><br>
 
         <!-- Action Parameterization III -->
         <h2>Action Parameterization III</h2>
@@ -161,7 +153,7 @@
 
         <!-- Questions -->
         <h2>Questions</h2>
-        <p>Linearize this system using each action parameterization about x_hip = 0, y_hip = 1, and theta = 0;</p>
+        <p>Linearize this system using each action parameterization about <a href="https://www.codecogs.com/eqnedit.php?latex=x_{hip}=0\text{,&space;}y_{hip}=1\text{,&space;and&space;}\theta=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{hip}=0\text{,&space;}y_{hip}=1\text{,&space;and&space;}\theta=0" title="x_{hip}=0\text{, }y_{hip}=1\text{, and }\theta=0" /></a>;</p>
 
         <p>Write an LQR controller that stabilizes the system about this point. Perturb the system a little and see the basin of attraction for disturbances in x, y, and theta.</p>
 
@@ -171,7 +163,7 @@
 
         <p>Question 3: What perturbation direction (x, y or theta) is the robot most vulnerable? What does vulnerable mean?</p>
 
-        <p>Bonus: Does parameterizing the state in terms of x_hip, y_hip or x_com, y_com improve LQR control? </p>
+        <p>Bonus: Does parameterizing the state in terms of <a href="https://www.codecogs.com/eqnedit.php?latex=x_{hip}\text{,&space;}y_{hip}\text{,&space;}x_{COM}\text{,&space;}y_{COM}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x_{hip}\text{,&space;}y_{hip}\text{,&space;}x_{COM}\text{,&space;}y_{COM}" title="x_{hip}\text{, }y_{hip}\text{, }x_{COM}\text{, }y_{COM}" /></a> improve LQR control? </p>
       </div> 
     </div>
 
