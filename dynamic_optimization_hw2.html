@@ -1,0 +1,217 @@
+<HTML>
+  <head>
+    <title>Dynamic Optimization Project</title>
+    <meta charset="utf-8">
+    <style>
+
+       @font-face {
+        font-family: 'Shift';
+        font-style: normal;
+        font-weight: normal;
+        src: url("http://s3.amazonaws.com/codecademy-content/courses/ltp/fonts/shift.woff") format("woff");
+      }
+
+      .nav a {
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+        padding: 14px 10px;
+        text-transform: uppercase;
+      }
+
+      .nav a:link{
+        text-decoration: none;
+        color: white;
+      }
+
+      .nav a:visited{
+        text-decoration: none;
+        color: white;
+      }
+
+      .jumbotron a {
+        color:white;
+      }
+
+      .nav a:hover{
+        text-decoration: underline;
+        color: white;
+      }
+
+      .nav li{
+        display: inline;
+      }
+
+      .nav {
+        background-color: #6f6c67;
+      }
+
+      .jumbotron {
+        background-image: url("cover-photo.jpg");
+        height: 500px;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .jumbotron .container {
+        position: relative;
+        top: 100px;
+      }
+
+      .jumbotron h1 {
+        color: #fff;
+        font-size: 48px;
+        font-family: 'Shift', sans-serif;
+        font-weight: bold;
+      }
+
+      .jumbotron p {
+        font-size: 20px;
+        color: #fff;
+      }
+      .paragraph_color {
+        font-family: 'Shift', sans-serif;
+        background-color: #dedede;
+      }
+
+      .paragraph {
+        font-family: 'Shift', sans-serif;
+      }
+
+    </style>
+  </head>
+
+  <body>
+     <div class="nav">
+      <div class="container">
+        <ul class="links">
+          <li><a href="http://cole.gulino.getforge.io/index.html">Home</a></li>
+          <li><a href="http://cole.gulino.getforge.io/cole_about_me.html">About Me</a></li>
+          <li><a href="http://cole.gulino.getforge.io/project_page.html">Projects Blog</a></li>
+          <li><a href="cole_resume.pdf">Resume</a></li>
+          <li><a href="cole_cv.pdf">CV</a></li>
+          <li><a href="http://www.linkedin.com/in/colegulino">Linkedin</a></li>
+          <li><a href="https://github.com/colegulino">Github</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <ul class="pull-left">
+          <li id="contact-info">
+            <h1>Dynamic Optimization HW2</h1>
+            <p>Name: Cole Gulino</p>
+            <p>Phone: (225) 223-1378</p>
+            <p>Email:
+              <a href="mailto:cole.gulino@gmail.com" target="_top">cole.gulino@gmail.com</a>
+            </p>
+            <p>Github Repository:
+              <a href="TODO">source code</a>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="paragraph">
+      <div id="part_one">
+        <!-- Part One -->
+        <h1>Part One</h1>
+        <p>Here we consider multiple ways to parameterize an inverted pendulum walking robot with an offset flywheel, which is a simplified model of Atrias.</p>
+        <p>Dynamics: For each case all the mass is concentrated at a body whose center of mass is LL = 0.1m above the hip. The body has mass M and moment of inertia around the center of mass I_com. M = 80 kg, I_com = 5 kgm^2, g = 9.81 m/s^2.</p>
+        <p>theta is the angle of the body with respect to vertical (measured with an IMU). psi is the angle of the hip with respect to the leg (measured with an encoder). The leg length is L. torque is the torque at the hip. force is the force along the leg. Fx_foot and Fy_foot are ground reaction forces in ground coordinates.</p>
+
+        <!-- Action Parameterization I-->
+        <h2>Action Parameterization I</h2>
+        <p>I_joint = I_com + M*LL^2 <br>
+        torque = I_joint*thetadd</p>
+
+        <p>x_hip = L*sin(theta - psi) <br>
+        y_hip = L*cos(theta - psi)</p>
+
+        <p>x_com = x_hip + LL*sin(theta) = L*sin(theta - psi) + LL*sin(theta) <br>
+        y_com = y_hip + LL*cos(theta) = L*cos(theta - psi) + LL*cos(theta) <br>
+        so <br>
+        x_comd = L*cos(theta - psi)*(thetad - psid) + LL*cos(theta)*thetad <br>
+        y_comd = -L*sin(theta - psi)*(thetad - psid) - LL*sin(theta)*thetad <br>
+        and <br>
+        x_comdd = L*cos(theta - psi)<em>(thetadd - psidd) - L*cos(theta - psi)</em>(thetad - psid)^2 <br>
+         + LL*cos(theta)*thetadd - LL*sin(theta)*thetad^2 <br>
+        y_comdd = -L*sin(theta - psi)<em>(thetadd - psidd) + L*sin(theta - psi)</em>(thetad - psid)^2 <br>
+         - LL*sin(theta)*thetadd - LL*cos(theta)*thetad^2</p>
+
+        <p>Fx_com = -force*sin(theta - psi) + torque*cos(theta-psi)/L <br>
+        Fy_com = force*cos(theta - psi) - M*g + torque*sin(theta-psi)/L</p>
+
+        <p>Fx_com = M*x_comdd <br>
+        Fy_com = M*y_comdd</p>
+
+        <!-- Action Parameterization II -->
+        <h2>Action Parameterization II</h2>
+        <p>The robot is controlled in terms of ground reaction forces Fx_foot and Fy_foot at the point foot. xcom_dd, ycom_dd and theta_dd are a function of Fx_foot and Fy_foot.</p>
+
+        <p>M*xcom_dd = Fx_foot <br>
+        M*ycom_dd = Fy_foot -M*g <br>
+        I_com*theta_dd = Fx_foot*y_com - Fy_foot*x_com</p>
+
+        <!-- Action Parameterization III -->
+        <h2>Action Parameterization III</h2>
+        <p>The robot has the kinematics of Atrias. There is a four bar mechanism, and two hip motors per leg. The dimensions of the four bar mechanism, as well as details about the four-bar dynamics can be found in <a href="https://www.cs.cmu.edu/~hgeyer/Publications/MartinEA15ICRA.pdf">this paper</a>. In particular, you should look at section III.</p>
+
+        <!-- Questions -->
+        <h2>Questions</h2>
+        <p>Linearize this system using each action parameterization about x_hip = 0, y_hip = 1, and theta = 0;</p>
+
+        <p>Write an LQR controller that stabilizes the system about this point. Perturb the system a little and see the basin of attraction for disturbances in x, y, and theta.</p>
+
+        <p>Question 1: What Q and R for LQR work best? What does work best mean? Can you come up with a way to automatically tune your Q and R matrices (for example, using CMA-ES)?</p>
+
+        <p>Question 2: Which action parameterization work best? What does work best mean?</p>
+
+        <p>Question 3: What perturbation direction (x, y or theta) is the robot most vulnerable? What does vulnerable mean?</p>
+
+        <p>Bonus: Does parameterizing the state in terms of x_hip, y_hip or x_com, y_com improve LQR control? </p>
+      </div> 
+    </div>
+
+
+    <div class="paragraph_color">
+      <div id="part_two">
+        <!-- Part Two -->
+        <h1>Part Two</h1>
+        <p>Generate trajectories that optimize the sum of the squared magnitudes of the u vectors, using each of the three action parameterizations. The robot should start standing at rest, walk 10m in 10s, and come to rest standing. You need to decide what to optimize. You might want to look at <a href="http://www.cs.cmu.edu/~sfeng/sf_hum13.pdf">this paper</a> as a guideline for this part and the next.</p>
+      </div>
+    </div>
+
+    <div class="paragraph">
+      <div id="part_three">
+        <!-- Part Three -->
+        <h1>Part Three</h1>
+        <p>Generate optimal controllers that follow the footstep trajectories you generated in part 2, using each of the three action representations. You need to decide what to optimize, but the robot should not fall down, and it should use small forces so we can run it off a battery.</p>
+
+        <p>(A) First do this by linearizing about just the (0,l,0) point. Use all the formulations for doing this, and compare performance.</p>
+
+        <p>(B) Now use DDP to do control. How does the performance differ from part A? </p>
+
+      </div>
+    </div>
+
+    <div class="paragraph_color">
+      <div id="bonus">
+        <!-- Bonus -->
+        <h1>Bonus</h1>
+        <p>Bonus: Use some form policy optimization to do Parts 2 and 3. </p>
+      </div>
+    </div>
+
+    <div class="paragraph_color">
+      <div id="relevant_papers">
+        <h1>Relevant Papers and Links</h1>
+        <p>The relevant papers for my project can be found here</p>
+        [1] <a href="https://www.cs.cmu.edu/~hgeyer/Publications/MartinEA15ICRA.pdf">Robust Spring Mass Model Running for a Physical Bipedal Robot</a> by Martin, Wu, and Geyer<br><br>
+      </div>
+    </div>
+
+  </body>
+</HTML>
