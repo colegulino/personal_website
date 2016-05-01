@@ -173,7 +173,7 @@
               <li>Without heuristics, Informed RRT* becomes RRT*</li>
               <li>Informed RRT* is less dependent on the dimension of the space and is much faster to compute as shown in Figure 3.</li>
               <center><img src="images/informedRRT*vsRRT*.png" alt="informed rrt*" align="middle" /></center>
-              <p align="middle">Figure 2) Performance of Informed RRT* vs. RRT* [3]</p> 
+              <p align="middle">Figure 3) Performance of Informed RRT* vs. RRT* [3]</p> 
             </ul>
           <li>Like Informed RRT*, BIT* uses Heuristics guided toward the goal to get a quick solution.</li>
           <ul>
@@ -367,10 +367,44 @@
       <div id="results">
         <h3>Results</h3>
         <p>This section shows the results from running A* vs BIT*</p>
-
+        <p>The first figure shows the precession from 50 - 100 - 500 - 1000 - 1500 iterations of the algorithm. As the number of iterations continue, the tree densifies within the hyperellipsoidal space. This continuously improves the answer.</p>
+        <center><img src="images/50_iter_1.png" alt="informed rrt*" align="middle" /></center>
+        <center><img src="images/100_iter_1.png" alt="informed rrt*" align="middle" /></center>
+        <center><img src="images/500_iter_1.png" alt="informed rrt*" align="middle" /></center>
+        <center><img src="images/1000_iter_1.png" alt="informed rrt*" align="middle" /></center>
+        <center><img src="images/1500_iter_1.png" alt="informed rrt*" align="middle" /></center>
+        <p align="middle">Figure 4) Progression of Densification of Tree and Improvement of Solution with BIT*</p> 
+        <h4>A* vs. BIT*</h4>
+        <p>Figure 5 shows a solution to our project domain using A*</p>
+        <center><img src="images/astar1.png" alt="informed rrt*" align="middle" /></center>
+        <p align="middle">Figure 5) Solution to Problem 1 using A*</p> 
+        <p>Figure 6 shows the solution through mutliple densifications using BIT*</p>
+        <p>An initial solution was found within 20 s</p>
+        <center><img src="images/bitstar1.png" alt="informed rrt*" align="middle" /></center>
+        <p align="middle">Figure 6) Solution to Problem 1 using BIT*</p> 
+        <p>The next three figures show comparisions between multiple runs of solutions with A* vs. BIT*</p>
+        <center><img src="images/astar2.png" alt="informed rrt*" align="middle" /></center>
+        <center><img src="images/bitstar2.png" alt="informed rrt*" align="middle" /></center>
+        <p align="middle">Figure 7) Solutions to Problem 2 Using A* and BIT*</p> 
+        <center><img src="images/astar3.png" alt="informed rrt*" align="middle" /></center>
+        <center><img src="images/bitstar3.png" alt="informed rrt*" align="middle" /></center>
+        <p align="middle">Figure 8) Solutions to Problem 3 Using A* and BIT*</p> 
+        <center><img src="images/astar4.png" alt="informed rrt*" align="middle" /></center>
+        <center><img src="images/bitstar4.png" alt="informed rrt*" align="middle" /></center>
+        <p align="middle">Figure 9) Solutions to Problem 4 Using A* and BIT*</p> 
+        <p>We noticed from the results that BIT* can provide a solution fast for very difficult search problems. As shown in Figure 5 and 6.</p>
+        <p>Like most sampling based methods, BIT* can provide a quck solution by sampling the space effectively. Using heuristics helps guide the tree towards the goal even faster.</p
+        <p>Unfortunately, we found that for very simple configurations such as Figure 9, A* was quicker and BIT* found a very poor solution.</p>
+        <p>This is a general drawback of sampling based methods. Unfortunately, the solution is only as good as how long you run it. BIT* is asymptotically optimal and will asymptotically reach optimality.</p>
+        <p>In short runs, however, BIT* may not find much better of a solution than simple RRT or hRRT.</p>
+        <p>The power of BIT* is shown in Figure 5 and 6, however. BIT* is an anytime alogirthm that can provide a quick solution at any moment during planning.</p>
+        <p>This allows you to run BIT* to find a solution through a complicated or high dimensional problem.</p>
+        <p>This solution may be suboptimal, but the longer you are able to run it, the better the solution becomes.</p>
+        <p>This shows BIT*'s strength as an anytime continuous algorithm for higher dimensional spaces.</p>
       </div>
     </div>
-    <div class="paragraph_color">
+    
+    <div class="paragraph">
       <div id="relevant_papers">
         <h3>Relevant Papers and Links</h3>
         <p>The relevant papers for my project can be found here</p>
