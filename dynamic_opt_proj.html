@@ -225,7 +225,7 @@
         <h4>Pruneing the graph</h4>
         <p>Line 5 of the pseudocode calls for pruning the graph. This involves removing all of the edges and the vertices that cannot improve the solution</p>
         <p>The paper assumes that any vertex or edge where the f_score (which is lower bound of the true cost if heuristic is admissable), is > the current best g_score for the goal.</p>
-        <pre><code>
+        <pre><code class="python">
           def Prune(self, c):
             print "Puning!"
             # Remove samples whose estmated cost to goal is > c
@@ -279,7 +279,7 @@
           <center><a href="https://www.codecogs.com/eqnedit.php?latex=\text{Translation}=\left(\mathbf{x}_{start}&plus;\mathbf{x}_{goal}&space;\right&space;)/2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\text{Translation}=\left(\mathbf{x}_{start}&plus;\mathbf{x}_{goal}&space;\right&space;)/2" title="\text{Translation}=\left(\mathbf{x}_{start}+\mathbf{x}_{goal} \right )/2" /></a></center>
         </ul>
         <p>The code is shown below</p>
-        <pre><code>
+        <pre><code class="python">
           def Sample(self, m, c_max = float("inf")):
             new_samples = dict()
             if c_max < float("inf"):
@@ -319,7 +319,7 @@
         <p>When choosing a new edge to add to the tree, the algorithm calls for expanding vertices until it can no longer find a vertex in the sampling space that could improve the answer better than anything in the edge queue</p>
         <p>This is line 8 of the pseudocode</p>
         <p>This piece of code is shown below:</p>
-        <pre><code>
+        <pre><code class="python">
           def ExpandVertex(self, vid):
             # Remove vertex from vertex queue
             self.vertex_queue.remove(vid)
@@ -367,7 +367,7 @@
       <div id="results">
         <h3>Results</h3>
         <p>This section shows the results from running A* vs BIT*</p>
-        
+
       </div>
     </div>
     <div class="paragraph_color">
