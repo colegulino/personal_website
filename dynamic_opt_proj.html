@@ -78,8 +78,21 @@
         font-family: 'Shift', sans-serif;
       }
 
+      .tab {
+        padding-left:5em
+      }
+
+      .double_tab{
+        padding-left:10em
+      }
+
     </style>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.3.0/styles/default.min.css">
+    <script src="//cdn.jsdelivr.net/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
   </head>
+
 
   <body>
      <div class="nav">
@@ -108,6 +121,7 @@
             <p>Github Repository:
               <a href="https://github.com/colegulino/bit_star">source code</a>
             </p>
+            <p>Team: Dan Berman and Cole Gulino</p>
           </li>
         </ul>
       </div>
@@ -117,6 +131,7 @@
       <div id="introduction">
         <h3>Introduction</h3>
         <p>This webpage is designed to contain all of the information for my final project for the course 16-745 Dynamic Optimization at Carnegie Mellon University</p>
+        <p>This project has a team including Dan Berman and Cole Gulino
         <p>The project that I will be working on is to implement a modern efficient motion planning algorithm.</p> 
       </div>
     </div>
@@ -129,6 +144,232 @@
       </div> 
     </div>
 
+    <div class="paragraph_color">
+      <div id="Motivation">
+        <h3>Motivation</h3>
+        <ul>
+          <li>Deciding between the two classes of motion planning algorithms (sampling-based vs. search-based) eventually come down to a fundamental trade-off: The efficiency of the sampling based methods vs. the optimality of search-based planners</li>
+          <li>Graph-Searches such as A* are guaranteed to find the optimal solution within their resolution, but they do not scale well to arbitrarily high-dimensional state spaces. They also have problems with systems that are highly continuous</li>
+          <li>Sampling-based methods such as RRT tend to scale well to higher dimensional problems, but they are only probabilistically complete and say nothing of optimality</li>
+          <li>Algorithms such as RRT* aim at providing optimality within the sampling-based framework</li>
+          <ul>
+            <li>RRT* finds the optimal path to every state in the space, which is unnecessary for single-query planners</li>
+            <ul>
+              <li>A property known as asymptotically stable</li>
+            </ul>
+            <li>RRT* is able to accomplish this by rewiring the graph where new states can be considered as possible replacement parents for nearby nodes</li>
+            <li>This allows for the emphasis on expansion of the RRT with an asymptotically optimal quality</li>
+            <li>Unfortunately, methods like RRT* can be inefficient because they must expand much of the space in order to provide an optimal solution.</li>
+          </ul>
+          <li>Methods such as Informed RRT* [3] aim to bound the sampling space.</li>
+          <center><img src="images/informed_RRTstar_densify.png" alt="informed rrt*" align="middle" /></center>
+          <p align="middle">Figure 1) Informed RRT* Densifying</p> 
+            <ul>
+              <li>Informed RRT* does this by sampling within a hyperellipsoid centered between the goal and the start where the major and minor axes are determined by the current best cost to goal</li>
+              <center><img src="images/hyperellipsoid.png" alt="informed rrt*" align="middle" /></center>
+              <p align="middle">Figure 2) Hyperellipsoid Defined by Current Cost to Goal</p> 
+              <li>Informed RRT* only samples from the subset of states defined by an admissible heuristic to possibly improve the solution</li>
+              <li>This subset implicitly balances exploitation versus exploration and requires no additional tuning or assumptions</li>
+              <li>Without heuristics, Informed RRT* becomes RRT*</li>
+              <li>Informed RRT* is less dependent on the dimension of the space and is much faster to compute as shown in Figure 3.</li>
+              <center><img src="images/informedRRT*vsRRT*.png" alt="informed rrt*" align="middle" /></center>
+              <p align="middle">Figure 2) Performance of Informed RRT* vs. RRT* [3]</p> 
+            </ul>
+          <li>Like Informed RRT*, BIT* uses Heuristics guided toward the goal to get a quick solution.</li>
+          <ul>
+            <li>The first batch samples uniformly in space</li>
+            <li>The subsequent batches sample from the hyper-ellipsoid defined by the best solution that has been currently found</li>
+            <li>As the solution improves, the hyper-ellipsoid shrinks</li>
+            <li>Edges and vertices that can no longer improve the solution are pruned</li>
+            <li>Once the graph has been pruned, you can use an efficient method to update the edges of the graph such as LPA*</li>
+          </ul>
+          <li>The main motivation for using BIT* is to be able to extend LPA* to continuous space domains that are extensible in continuous spaces and higher dimensions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="paragraph">
+      <div id="algorithm">
+        <h3>Algorithm</h3>
+        <h4>Pseudocode</h4>
+        <ol>
+          <li>Initialize start as a vertex and goal in samples</li>
+          <li>Initialize the vertex and edge queues to empty</li>
+          <li>Repeat</li>
+          <li class="tab">If edge queue and vertex queue are empty:</li>
+          <li class="double_tab">Prune the graph</li>
+          <li class="double_tab"> Resample</li>
+          <li class="double_tab"> Add vertices to the vertex queue</li>
+          <li class="tab">Expand best vertex until there is a vertex in the vertex queue better than an edge in the edge queue</li>
+          <li class="tab">Get the best edge from the edge queue</li>
+          <li class="tab">If it can improve the solution:</li>
+          <li class="double_tab">Add the edge</li>
+          <li class="tab">If it cannot:</li>
+          <li class="double_tab">Clear the queues</li>
+          <li>Run for anytime</li>
+        </ol>
+        <h4>Our Environment</h4>
+        <ul>
+          <li>We assume that we have a holonomic robot with omni-controls</li>
+          <li>We assume that we have perfect perception and a perfect collision checker</li>
+          <li>Consider only a 2D state</li>
+          <li>Cost is straight line distance</li>
+          <li>Heuristic is Manhattan Distance</li>
+        </ul>
+        <h4>Testing Setup</h4>
+        <ul>
+          <li>Generated random environments with 20 obstacles</li>
+          <li>Ran A* - Measured time to find solution</li>
+          <li>Ran BIT* - Terminated after A*’s run time</li>
+        </ul>
+        <h4>Pruneing the graph</h4>
+        <p>Line 5 of the pseudocode calls for pruning the graph. This involves removing all of the edges and the vertices that cannot improve the solution</p>
+        <p>The paper assumes that any vertex or edge where the f_score (which is lower bound of the true cost if heuristic is admissable), is > the current best g_score for the goal.</p>
+        <pre><code>
+          def Prune(self, c):
+            print "Puning!"
+            # Remove samples whose estmated cost to goal is > c
+            self.samples = {node_id:config for node_id, config in self.samples.iteritems() if self.planning_env.ComputeDistance(self.start_id, node_id) + self.planning_env.ComputeHeuristicCost(node_id, self.goal_id) <= c}
+
+            # Remove vertices whose estimated cost to goal is > c
+            vertices_to_delete = []
+            for vertex, edges in self.tree.vertices.iteritems():
+                if self.f_scores[vertex] > c or self.f_scores[vertex] == float("inf"):
+                    # Delete the vertex and all of its edges
+                    for edge in edges:
+                        self.tree.vertices[edge].remove(vertex)
+                        self.tree.vertices[vertex].remove(edge)
+                        if (edge, vertex) in self.tree.edges:
+                            self.tree.edges.remove((edge,vertex))
+                        if (vertex, edge) in self.tree.edges:
+                            self.tree.edges.remove((vertex,edge))
+                    vertices_to_delete.append(vertex)
+            for vertex in vertices_to_delete:
+                del self.tree.vertices[vertex]
+            self.UpdateGraph()
+
+            # Remove edge if either vertex connected to its estimated cost to goal is > c
+            for nid in self.tree.edges:
+                if self.f_scores[nid[0]] > c or self.f_scores[nid[1]] > c:
+                    if nid[1] in self.tree.vertices[nid[0]]:
+                        self.tree.vertices[nid[0]].remove(nid[1])
+                    if nid[0] in self.tree.vertices[nid[1]]:
+                        self.tree.vertices[nid[1]].remove(nid[0])
+                    self.tree.edges.remove((nid[0], nid[1]))
+            self.ReturnDisconnected()
+            self.UpdateGraph()
+        </code></pre>
+        <p>All vertices removed from the tree that are disconnected are returned to the sampling list to be expanded possibly later.</p>
+        <h4>Sampling</h4>
+        <p>Before a solution is found, the algorithm calls for sampling uniformly from free space.</p>
+        <p>Once a solution is found, the algorithm calls for sampling from the hyperellipsoid area that contains configurations that could possibly improve the answer.</p>
+        <p>If we describe the optimal path through the space as:</p>
+        <center><a href="https://www.codecogs.com/eqnedit.php?latex=\sigma^*&space;=&space;\underset{\sigma&space;\in&space;\sum}{\text{argmin}}\begin{Bmatrix}&space;c(\sigma)|&space;\sigma(0)=\mathbf{x}_{start},&space;\sigma(1)=\mathbf{x}_{goal},\forall&space;s\in&space;[0,1],\sigma(s)\in&space;X_{free}&space;\end{Bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\sigma^*&space;=&space;\underset{\sigma&space;\in&space;\sum}{\text{argmin}}\begin{Bmatrix}&space;c(\sigma)|&space;\sigma(0)=\mathbf{x}_{start},&space;\sigma(1)=\mathbf{x}_{goal},\forall&space;s\in&space;[0,1],\sigma(s)\in&space;X_{free}&space;\end{Bmatrix}" title="\sigma^* = \underset{\sigma \in \sum}{\text{argmin}}\begin{Bmatrix} c(\sigma)| \sigma(0)=\mathbf{x}_{start}, \sigma(1)=\mathbf{x}_{goal},\forall s\in [0,1],\sigma(s)\in X_{free} \end{Bmatrix}" /></a></center>
+        <p>The subset of states that can improve a solution can be defined as:</p>
+        <center><a href="https://www.codecogs.com/eqnedit.php?latex=X_f=\begin{Bmatrix}&space;\mathbf{x}\in&space;X|f\left(\mathbf{x}&space;\right&space;)<c_{best}&space;\end{Bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X_f=\begin{Bmatrix}&space;\mathbf{x}\in&space;X|f\left(\mathbf{x}&space;\right&space;)<c_{best}&space;\end{Bmatrix}" title="X_f=\begin{Bmatrix} \mathbf{x}\in X|f\left(\mathbf{x} \right )<c_{best} \end{Bmatrix}" /></a></center>
+        <p>If the cost is just straight line distance, than these states can be shown to be the equation of an n-dimensional hyperellipsoid:</p>
+        <center><a href="https://www.codecogs.com/eqnedit.php?latex=X_f=\begin{Bmatrix}&space;\mathbf{x}\inX|\begin{Vmatrix}&space;\mathbf{x}_{start}-\mathbf{x}&space;\end{Vmatrix}_2&space;&plus;&space;\begin{Vmatrix}&space;\mathbf{x}-\mathbf{x}_{goal}&space;\end{Vmatrix}_2&space;\le&space;c_{best}&space;\end{Bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?X_f=\begin{Bmatrix}&space;\mathbf{x}\inX|\begin{Vmatrix}&space;\mathbf{x}_{start}-\mathbf{x}&space;\end{Vmatrix}_2&space;&plus;&space;\begin{Vmatrix}&space;\mathbf{x}-\mathbf{x}_{goal}&space;\end{Vmatrix}_2&space;\le&space;c_{best}&space;\end{Bmatrix}" title="X_f=\begin{Bmatrix} \mathbf{x}\inX|\begin{Vmatrix} \mathbf{x}_{start}-\mathbf{x} \end{Vmatrix}_2 + \begin{Vmatrix} \mathbf{x}-\mathbf{x}_{goal} \end{Vmatrix}_2 \le c_{best} \end{Bmatrix}" /></a></center>
+        <p>Whenever you find a solution and begin to sample the hyperellipsoid, the algorithm calls for:</p>
+        <ul>
+          <li>Sample a unit N-Ball [5], by using rejection sampling</li>
+          <li>It then calls for providing a translation and scaling in order to convert the Unit N-Ball into a hyperellipsoid</li>
+          <li>The scaling of the N-Ball is defined for the 2D case considered as:</li>
+          <center><a href="https://www.codecogs.com/eqnedit.php?latex=\text{Scale}_{\text{2D}}=\begin{bmatrix}&space;c_{max}/2&space;&0&space;\\&space;0&space;&&space;\sqrt{c_{max}-c_{min}}/2&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\text{Scale}_{\text{2D}}=\begin{bmatrix}&space;c_{max}/2&space;&0&space;\\&space;0&space;&&space;\sqrt{c_{max}-c_{min}}/2&space;\end{bmatrix}" title="\text{Scale}_{\text{2D}}=\begin{bmatrix} c_{max}/2 &0 \\ 0 & \sqrt{c_{max}-c_{min}}/2 \end{bmatrix}" /></a></center>
+          <li>The translation is to the center between the start and the goal config</li>
+          <center><a href="https://www.codecogs.com/eqnedit.php?latex=\text{Translation}=\left(\mathbf{x}_{start}&plus;\mathbf{x}_{goal}&space;\right&space;)/2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\text{Translation}=\left(\mathbf{x}_{start}&plus;\mathbf{x}_{goal}&space;\right&space;)/2" title="\text{Translation}=\left(\mathbf{x}_{start}+\mathbf{x}_{goal} \right )/2" /></a></center>
+        </ul>
+        <p>The code is shown below</p>
+        <pre><code>
+          def Sample(self, m, c_max = float("inf")):
+            new_samples = dict()
+            if c_max < float("inf"):
+                c_min = self.planning_env.ComputeDistance(self.start_config, self.goal_config)
+                x_center = (self.start_config + self.goal_config) / 2
+                # Get a random sample form the unit ball
+                X_ball = self.SampleUnitNBall(m)
+                # scale the unit ball
+                scale = self.planning_env.GetEllipsoidScale(c_max, c_min)
+                points_scale = numpy.dot(X_ball, scale)
+                # Translate them to the center
+                points_trans = points_scale + x_center 
+                # generate the dictionary
+                for point in points_trans:
+                    node_id = self.planning_env.discrete_env.ConfigurationToNodeId(numpy.array(point))
+                    new_samples[node_id] = numpy.array(point)
+            else:
+                # Initially just uniformly sample
+                for i in xrange(0, m + 1):
+                    random_config = self.planning_env.GenerateRandomConfiguration()
+                    random_id = self.planning_env.discrete_env.ConfigurationToNodeId(random_config)
+                    new_samples[random_id] = random_config
+            return new_samples
+
+          def SampleUnitNBall(self, m):
+              points = numpy.random.uniform(-1, 1, [m*2, self.planning_env.dimension])
+              points = list(points)
+              points = [point for point in points if numpy.linalg.norm(point,2) < 1]
+              points = numpy.array(points)
+              points = list(points)
+              points = [point for point in points if self.planning_env.ValidConfig(point)]
+              points = numpy.array(points)
+              print "Shape of points: ", numpy.shape(points)
+              return points[0:m,:]
+        </code></pre>
+        <h4>Expanding Vertices</h4>
+        <p>When choosing a new edge to add to the tree, the algorithm calls for expanding vertices until it can no longer find a vertex in the sampling space that could improve the answer better than anything in the edge queue</p>
+        <p>This is line 8 of the pseudocode</p>
+        <p>This piece of code is shown below:</p>
+        <pre><code>
+          def ExpandVertex(self, vid):
+            # Remove vertex from vertex queue
+            self.vertex_queue.remove(vid)
+
+            # Get the current configure from the vertex 
+            curr_config = numpy.array(self.planning_env.discrete_env.NodeIdToConfiguration(vid))
+
+            # Get a nearest value in vertex for every one in samples where difference is less than the radius
+            possible_neighbors = [] # possible sampled configs that are within radius
+            #print "Samples to expand: ", self.samples 
+            for sample_id, sample_config in self.samples.iteritems():
+                sample_config = numpy.array(sample_config)
+                if(numpy.linalg.norm(sample_config - curr_config,2) <= self.r and sample_id != vid):
+                    possible_neighbors.append((sample_id, sample_config))
+
+            # Add an edge to the edge queue if the path might improve the solution
+            for neighbor in possible_neighbors:
+                sample_id = neighbor[0]
+                sample_config = neighbor[1]
+                estimated_f_score = self.planning_env.ComputeDistance(self.start_id, vid) + self.planning_env.ComputeDistance(vid, sample_id) + self.planning_env.ComputeHeuristicCost(sample_id, self.goal_id)
+                if estimated_f_score < self.g_scores[self.goal_id]:
+                    self.edge_queue.append((vid, sample_id))
+
+            # Add the vertex to the edge queue
+            if vid not in self.v_old:
+                possible_neighbors = []
+                for v, edges in self.tree.vertices.iteritems():
+                    if v != vid and (v, vid) not in self.edge_queue and (vid, v) not in self.edge_queue:
+                        v_config = numpy.array(self.planning_env.discrete_env.NodeIdToConfiguration(v))
+                        if(numpy.linalg.norm(v_config - curr_config,2) <= self.r and v != vid):
+                            possible_neighbors.append((vid, v_config))
+
+                # Add an edge to the edge queue if the path might improve the solution
+                for neighbor in possible_neighbors:
+                    sample_id = neighbor[0]
+                    sample_config = neighbor[1]
+                    estimated_f_score = self.planning_env.ComputeDistance(self.start_id, vid) + self.planning_env.ComputeDistance(vid, sample_id) + self.planning_env.ComputeHeuristicCost(sample_id, self.goal_id)
+                    if estimated_f_score < self.g_scores[self.goal_id] and (self.g_scores[vid] + self.planning_env.ComputeDistance(vid,sample_id)) < self.g_scores[sample_id]:
+                        self.edge_queue.append((vid, sample_id))
+        </code></pre>
+      </div>
+    </div>
+
+    <div class="paragraph_color">
+      <div id="results">
+        <h3>Results</h3>
+        <p>This section shows the results from running A* vs BIT*</p>
+        
+      </div>
+    </div>
     <div class="paragraph_color">
       <div id="relevant_papers">
         <h3>Relevant Papers and Links</h3>
