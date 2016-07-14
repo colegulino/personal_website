@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"para",
+				"paragraph_color"
+			],
+			[
+				"high",
+				"highlight"
+			],
+			[
+				"dyna",
+				"dynamic_opt_proj"
+			],
+			[
+				"par",
+				"paragraph_color"
+			],
+			[
+				"g",
+				"getforge"
+			],
+			[
+				"paragraph",
+				"paragraph_color	(project_page.html)"
+			],
+			[
+				"rele",
+				"relevant_papers"
+			],
+			[
 				"getP",
 				"getParameters"
 			],
@@ -204,10 +232,26 @@
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"file": "dynamic_opt_proj.html",
 			"settings":
 			{
-				"buffer_size": 2194,
+				"buffer_size": 26470,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "project_page.html",
+			"settings":
+			{
+				"buffer_size": 3245,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "reinforcement_learning.html",
+			"settings":
+			{
+				"buffer_size": 4018,
 				"line_ending": "Unix"
 			}
 		}
@@ -219,12 +263,16 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 0.0,
-		"last_filter": "",
+		"height": 75.0,
+		"last_filter": "Install Package	",
 		"selected_items":
 		[
+			[
+				"Install Package	",
+				"Package Control: Install Package"
+			]
 		],
-		"width": 0.0
+		"width": 539.0
 	},
 	"console":
 	{
@@ -242,13 +290,29 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/home/cole/Dropbox/Personal_Website"
+	],
 	"file_history":
 	[
+		"/home/cole/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/cole/Dropbox/Personal_Website/project_page.html",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Manipulation, Mobility, and Control/Problem Sets/Problem Set 2 - Control/src/code/linearized_system.m",
+		"/home/cole/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/cole/Dropbox/Personal_Website/dynamic_opt_proj.html",
+		"/home/cole/Dropbox/Personal_Website/index.html",
+		"/home/cole/Dropbox/Personal_Website/dynamic_opt_proj2.html",
+		"/home/cole/Dropbox/Personal_Website/cv_project.html",
+		"/home/cole/Dropbox/Personal_Website/cole_about_me.html",
+		"/home/cole/Dropbox/Personal_Website/dynamic_optimization_hw2.html",
+		"/home/cole/.config/sublime-text-3/Packages/View In Browser/View In Browser.sublime-settings",
+		"/home/cole/Dropbox/Carnegie Mellon/Fall 2015/Manipulation, Mobility, and Control/Problem Sets/Problem Set 4 - Raibert Hopper/src/RaibertHopperCole2.m",
+		"/home/cole/Dropbox/Personal_Website/README.md",
 		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/include/trajectory_database/posture.h",
 		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/include/trajectory_database/data_structs.h",
 		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/CMakeLists.txt",
 		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/include/trajectory_database/motion_primitive_generator.h",
-		"/home/cole/Dropbox/Personal_Website/index.html",
 		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/include/trajectory_database/TrajectoryDatabase.h",
 		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/src/database_profile.cpp",
 		"/home/cole/Dropbox/work/Database/database_ws/src/trajectory_database/src/profile_hash_table.cpp",
@@ -360,34 +424,144 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
+					"file": "dynamic_opt_proj.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2194,
+						"buffer_size": 26470,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1331,
-								1331
+								25054,
+								25054
+							]
+						],
+						"settings":
+						{
+							"highlight_line": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": true,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_insert",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 76
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 5527.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "project_page.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3245,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3235,
+								3235
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"_vintageous_non_interactive": false,
+								"_vintageous_processing_notation": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 8
+							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 855.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "reinforcement_learning.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4018,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3765,
+								3765
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"_vintageous_non_interactive": false,
+								"_vintageous_processing_notation": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_insert",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 21
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 1710.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -402,7 +576,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -468,6 +642,11 @@
 	"selected_group": 0,
 	"settings":
 	{
+		"_vintageous_reset_during_init": true,
+		"vintage":
+		{
+			"_cmdline_cd": "/home/cole/Dropbox/Personal_Website"
+		}
 	},
 	"show_minimap": true,
 	"show_open_files": false,
